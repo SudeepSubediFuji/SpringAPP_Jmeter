@@ -22,14 +22,11 @@ public class advisorController {
 
     private static final Logger log = LogManager.getLogger(advisorController.class);
     private final ChatClient ollamaOfficeChatClient;
-//    private final ChatClient openAISimpleChatClient;
-//    private final ChatClient openAiChatClient;
 
     //@Qualifier("openAISimpleChatClient") ChatClient openAISimpleChatClient
     public advisorController(@Qualifier("ollamaOfficeChatClient") ChatClient ollamaOfficeChatClient
     ) {
         this.ollamaOfficeChatClient = ollamaOfficeChatClient;
-//        this.openAISimpleChatClient = openAISimpleChatClient;
     }
 
     @GetMapping("/office")
@@ -73,18 +70,6 @@ public class advisorController {
     public String ollamaofficeAdvisorChat2(@RequestParam("message") String message) {
         return ollamaOfficeChatClient.prompt(message).advisors(new SimpleLoggerAdvisor()).call().content();
     }
-
-//    @GetMapping("/fulloff")
-//    public String ollamaofficeAdvisorChat3(@RequestParam ("message") String message) {
-//        return ollamaOfficeChatClient.prompt(message)
-//                .advisors(AdvisorSpec->
-//                        AdvisorSpec.param("",new SimpleLoggerAdvisor()).call().content());
-//    }
-
-//    @GetMapping("/openai")
-//    public String openAiAdvisorChat(@RequestParam ("message") String message) {
-//        return openAISimpleChatClient.prompt(message).call().content();
-//    }
 
     @GetMapping("/open")
     public String ollamaAdvisorChat2(@RequestParam("message") String message) {

@@ -28,10 +28,4 @@ public class ChatMemoryChatClientConfig {
         Advisor chatMemoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory).build();
         return baseClient.mutate().defaultAdvisors(chatMemoryAdvisor, new SimpleLoggerAdvisor()).build();
     }
-
-//    @Bean("openAiChatMemoryChatClient")
-//    public ChatClient ChatMemoryOpenAiChatClient(@Qualifier("openAiChatMemoryClientBase") ChatClient baseClient, ChatMemory chatMemory) {
-//        Advisor chatMemoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory).build();
-//        return baseClient.mutate().defaultAdvisors(chatMemoryAdvisor,new SimpleLoggerAdvisor()).build();
-//    }
 }
